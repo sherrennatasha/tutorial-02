@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Optional;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,23 @@ public class PageController {
 		}
 		return "hello2";
 	}
+	
+	//Latihan calculator
+	@RequestMapping(value={"/calcuconvert/{angka1}/{angka2}"})
+	public String kalkulator(@PathVariable int angka1, @PathVariable int angka2, Model model) {
+		int res = angka1+angka2;
+		
+		String[] angkastring = {"Nol","Satu","Dua","Tiga","Empat","Lima","Enam",
+								"Tujuh","Delapan","Sembilan","Sepuluh","Sebelas",
+								"Dua Belas","Tiga Belas","Empat Belas","Lima Belas",
+								"Enam Belas","Tujuh Belas","Delapan Belas","Sembilan Belas",
+								"Dua Puluh"};
+		String angka = angka1 + " + " + angka2 + " = " + res + " (" + angkastring[res] + ")";
+		
+		model.addAttribute("angka",angka);
+		return "calcuconvert";
+		}
 }
+
 
 
